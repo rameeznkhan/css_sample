@@ -128,7 +128,7 @@ body {
 
 .header-nav > li {
   display: inline-block;
-  margin: 1em;
+  margin: 1em 0 0;
 } 
 
 .header a {
@@ -155,6 +155,21 @@ body {
   padding-left: 1em;
 }
 
+.header-nav a,
+drop-trigger {
+  font-size: 0.8em;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.header-nav > li:first-child a:hover{
+  color: #fff;
+}
+.header-nav>li a:hover{
+  color: #ed6e2f;
+}
+
 .nav-links a:hover,
 .nav-links a:active {
   color: #ed6e2f;
@@ -164,6 +179,133 @@ body {
 .header-logo:active{
   background-color: #ed6e2f;
 }
+
+/*DROPDOWN STYLES*/
+.dropdown {
+  position: relative;
+}
+.dropdown:hover .drop-menu {
+  display: block;
+}
+.dropdown:hover .drop-trigger:after {
+  border-color: #ed6e2f transparent transparent;
+}
+
+.drop-trigger{
+  display: inline-block;
+  padding-right: 1.5em;
+  position: relative;
+}
+.drop-trigger:after{
+  border: 0.3em solid;
+  border-color: #fff transparent transparent;
+  content: "";
+  height: 0;
+  position: absolute;
+  right: 0;
+  top: 0.3em;
+  width: 0;
+}
+
+.drop-menu {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  display: none;
+  list-style: none;
+  padding: 1em 0 0;
+  position: absolute;
+  right: 0;
+  z-index: 9;
+}
+
+.drop-menu:before {
+  border: 0.6em solid;
+  border-color: transparent transparent #fff;
+  content: "";
+  height: 0;
+  position: absolute;
+  right: 1em;
+  top:-0.1em;
+  width: 0;
+}
+
+.drop-menu li ~ li {
+  border-top: 1px dotted rgba(0, 0, 0, 0.1);
+}
+
+.drop-menu li:first-child {
+  border-radius: 5px 5px 0px 0px;
+  color: #999;
+  font-weight: 0.5em;
+  padding: 1em 1em 0.25em;
+  text-align: right;
+  text-transform: uppercase;
+
+}
+
+.drop-menu li:last-child {
+  border-radius: 0px 0px 5px 5px;
+}
+
+.drop-menu li {
+  background-color: #fff;
+}
+
+.drop-menu a{
+  color: #333;
+  display: block;
+  font-weight: normal;
+  padding: 0.5em 2em 0.5em 1em;
+  text-align: left;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.drop-menu a:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+/*HIDE IN THE FOOTER*/
+.footer .dropdown:hover .drop-menu,
+ {
+  /*display: none;*/
+ 
+}
+
+.footer .drop-trigger:after {
+  border: 5px solid;
+  border-color: transparent transparent #ed6e2f;
+  top: -5px;
+}
+
+.footer .drop-menu {
+  bottom: 1.5em;
+  right: 0;
+  padding: 1.5em 0 1.5em;
+}
+.footer .drop-menu:before {
+  content: "";
+  height: 0;
+  position: absolute;
+  right: 1em;
+  bottom: 0.3em;
+  top: auto;
+}
+.footer .dropdown {
+  margin-top: 0.5em;
+}
+.footer .drop-trigger:after {
+  border-color: transparent transparent #fff;
+  bottom: 40%;
+  top: auto;
+}
+
+/*MOBILE MENU*/
+.mobile-menu-check, 
+.show-mobile-menu {
+  display: none;
+}
+
 
 /*FOOTER STYLES*/
 .footer {
@@ -194,6 +336,8 @@ body {
 .footer-nav a {
   color: #ccc
 }
+
+
 
 /*COLUMN STYLES*/
 .col-three {
@@ -599,6 +743,8 @@ line-height: 1.5;
     box-shadow: none;
     padding: 0;
   }
+
+
   /*HEADER STYLES*/
   .header-nav {
     padding: 2vh 1em 0 0;
@@ -618,6 +764,72 @@ line-height: 1.5;
 
   .header-logo {
     left: auto;
+  }
+
+  /*MOBILE MENU*/
+  .show-mobile-menu {
+    display: block;
+    float: right;
+    font-weight: bold;
+    padding: 1.5em;
+    position: relative;
+    margin-top: 1.5vh;
+  }
+
+  .header-nav {
+    background-color: #444;
+    box-sizing: border-box;
+    left: 0;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+    text-align: center;
+    top: 10vh;
+    transition: all 0.5s ease-in-out;
+    width: 100vw;
+    z-index: 9;
+  }
+
+  .header-nav li {
+    border: 0;
+    display: block;
+    margin-top: 1em 0 0;
+    padding: 0;
+  }
+
+  .header-nav li:first-child a {
+    color: #fff;
+  }
+
+  /*HIDE NAV MENU*/ 
+
+  .header-nav .drop-trigger {
+    padding-right: 0;
+  }
+
+  .header-nav .drop-menu:after,
+  .header-nav .drop-trigger:after {
+    display: none;
+
+  }
+
+  .header-nav li:last-child {
+    margin-bottom: 1em;
+  }
+
+  .mobile-menu-check:checked ~ .header-nav {
+      max-height: 1000px;
+  }
+
+  .mobile-menu-check:checked ~ .show-mobile-menu:after {
+    background-color: #000;
+    color: #ed6e2f;
+    content: "CLOSE";
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 1.5em;
+    width: 100%;
   }
 
   /*HOME STYLES*/
@@ -688,6 +900,7 @@ line-height: 1.5;
 
 
 }
+
 
 /*@media (max-width: 600px) {
   .half-hero {
