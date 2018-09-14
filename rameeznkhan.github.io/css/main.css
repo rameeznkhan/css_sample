@@ -797,6 +797,11 @@ line-height: 1.5;
     padding: 0;
   }
 
+  .header-nav li ~ li {
+    border: 0;
+    padding: 0;
+  }
+
   .header-nav li:first-child a {
     color: #fff;
   }
